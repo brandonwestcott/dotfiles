@@ -1,0 +1,8 @@
+# Export user bin PATH ahead of system
+export PATH=/usr/local/bin:$PATH
+
+# Add RVM to PATH
+export PATH=$PATH:$HOME/.rvm/bin
+
+# Add NPM to PATH
+export PATH=$PATH:/usr/local/share/npm/bin
