@@ -53,6 +53,17 @@ set shiftwidth=2
 set tabstop=2
 set smarttab
 
+" Mappings
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+" Panel switching
+imap jk <C-[>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
 " Training wheels (disable arrow keys)
 nnoremap <up> <nop>
 nnoremap <down> <nop>
