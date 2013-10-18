@@ -1,8 +1,11 @@
-# Export user bin PATH ahead of system
-export PATH=/usr/local/bin:$PATH
+# Add gnubin PATH ahead of system
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # Add RVM to PATH
-export PATH=$PATH:$HOME/.rvm/bin
+PATH=$PATH:$HOME/.rvm/bin
 
 # Add NPM to PATH
-export PATH=$PATH:/usr/local/share/npm/bin
+PATH=$PATH:/usr/local/share/npm/bin
+
+# Add user bin PATH ahead of everything
+PATH=/usr/local/bin:$PATH
