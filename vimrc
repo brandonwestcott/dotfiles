@@ -52,21 +52,24 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set smarttab
-
-" Nerdtree
-let NERDTreeQuitOnOpen=0
-  
-" Mappings
 " Indent lines with cmd+[ and cmd+]
 nmap <D-]> >>
 nmap <D-[> <<
 vmap <D-[> <gv
 vmap <D-]> >gv
 
+" Commenting
+filetype plugin on
+" Comment lines with cmd+/
+map  <D-/> <leader>c<space>
+vmap <D-/> <leader>c<space>
+
 " Nerdtree
+let NERDTreeQuitOnOpen=0
+" Nerdtree Show/Hide
 map <C-n> :NERDTreeToggle<CR>
 
-" Buffer
+" Buffer File List
 map <c-b> :CtrlPBuffer<CR>
 
 " Finding
