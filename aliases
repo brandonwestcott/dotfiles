@@ -14,6 +14,7 @@ function gblame() { git blame $@ | sort -b -k 3}
 
 #directory shortcuts
 alias .wk='cd ~/working/'
+alias .dot='cd ~/.dotfiles/'
 
 # ls aliases
 # Detect which `ls` flavor is in use
