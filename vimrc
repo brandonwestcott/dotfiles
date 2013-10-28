@@ -57,6 +57,12 @@ set smarttab
 let NERDTreeQuitOnOpen=0
   
 " Mappings
+" Indent lines with cmd+[ and cmd+]
+nmap <D-]> >>
+nmap <D-[> <<
+vmap <D-[> <gv
+vmap <D-]> >gv
+
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
