@@ -53,6 +53,9 @@ set shiftwidth=2
 set tabstop=2
 set smarttab
 
+" Nerdtree
+let NERDTreeQuitOnOpen=0
+  
 " Mappings
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
