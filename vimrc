@@ -67,7 +67,16 @@ vmap <D-/> <leader>c<space>
 " Nerdtree
 let NERDTreeQuitOnOpen=0
 " Nerdtree Show/Hide
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
+" Hide second Nerdtree buffer if open
+autocmd VimEnter * if bufname('1') == 'NERD_tree_1' | silent execute "bd 2" | endif
+" Autoshow nerdtree when not committing
+" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif
+" config options
+let g:nerdtree_tabs_autoclose=0
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_gui_startup=1
 
 " Buffer File List
 map <c-b> :CtrlPBuffer<CR>
