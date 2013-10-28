@@ -60,7 +60,13 @@ let NERDTreeQuitOnOpen=0
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
-" Panel switching
+" Buffer
+map <c-b> :CtrlPBuffer<CR>
+
+" Finding
+map <C-f> :Ack<space>
+
+"Window switching
 imap jk <C-[>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
