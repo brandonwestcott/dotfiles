@@ -33,6 +33,8 @@ set shortmess=atI
 set noerrorbells
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+" Mouse scrolling
+set mouse=a
 
 " Better search options
 set ignorecase
@@ -90,6 +92,10 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+" Scrolling
+map <S-j> <c-u>
+map <S-k> <c-d>
 
 " Training wheels (disable arrow keys)
 nnoremap <up> <nop>
