@@ -83,6 +83,10 @@ let g:nerdtree_tabs_open_on_gui_startup=1
 " Buffer File List
 map <c-b> :CtrlPBuffer<CR>
 
+" Buffer closing
+nnoremap <Leader>q :Bdelete<CR>
+noremap <Leader>wq :w<CR>:Bdelete<CR>
+
 " Finding
 map <c-f> :Ack<space>
 
