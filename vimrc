@@ -54,17 +54,17 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set smarttab
-" Indent lines with cmd+[ and cmd+]
-nmap <D-]> >>
-nmap <D-[> <<
-vmap <D-[> <gv
-vmap <D-]> >gv
+" Indent lines with ctrl+[ and ctrl+]
+nmap <c-]> >>
+nmap <c-[> <<
+vmap <c-[> <gv
+vmap <c-]> >gv
 
 " Commenting
 filetype plugin on
-" Comment lines with cmd+/
-map  <D-/> <leader>c<space>
-vmap <D-/> <leader>c<space>
+" Comment lines with ctrl+/ (hack through _)
+map  <C-_> <leader>c<space>
+vmap <C-_> <leader>c<space>
 
 " Nerdtree
 let NERDTreeQuitOnOpen=0
