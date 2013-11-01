@@ -94,8 +94,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " Scrolling
-map <S-j> <c-u>
-map <S-k> <c-d>
+map <S-k> <c-u>
+map <S-j> <c-d>
 
 " Training wheels (disable arrow keys)
 nnoremap <up> <nop>
