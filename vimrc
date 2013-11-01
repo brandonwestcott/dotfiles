@@ -84,10 +84,10 @@ let g:nerdtree_tabs_open_on_gui_startup=1
 map <c-b> :CtrlPBuffer<CR>
 
 " Finding
-map <C-f> :Ack<space>
+map <c-f> :Ack<space>
 
 "Window switching
-imap jk <C-[>
+imap jk <c-[>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
