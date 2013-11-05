@@ -55,10 +55,10 @@ set shiftwidth=2
 set tabstop=2
 set smarttab
 " Indent lines with ctrl+[ and ctrl+]
-nmap <c-]> >>
-nmap <c-[> <<
-vmap <c-[> <gv
-vmap <c-]> >gv
+nmap <c-o> >>
+nmap <c-i> <<
+vmap <c-o> >gv
+vmap <c-i> <gv
 
 " Commenting
 filetype plugin on
