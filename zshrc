@@ -1,6 +1,9 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
+#Enable vi mode
+bindkey -v
+
 for file in ~/.{path,exports,aliases,functions,extra}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
@@ -48,12 +51,19 @@ unsetopt correct_all
 unsetopt share_history
 setopt inc_append_history
 
-function history-incremental-search-backward-all {
-	setopt share_history
-	zle history-incremental-search-backward
+autoload -Uz narrow-to-region
+function _history-incremental-preserving-pattern-search-backward
+{
+  local state
+  MARK=CURSOR  # magick, else multiple ^R don't work
+  narrow-to-region -p "$LBUFFER${BUFFER:+>>}" -P "${BUFFER:+<<}$RBUFFER" -S state
+  zle end-of-history
+  zle history-incremental-pattern-search-backward
+  narrow-to-region -R state
 }
-zle -N history-incremental-search-backward-all
-bindkey '^R' history-incremental-search-backward-all
+zle -N _history-incremental-preserving-pattern-search-backward
+bindkey "^R" _history-incremental-preserving-pattern-search-backward
+bindkey -M isearch "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 
-#Enable vi mode
-bindkey -v
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
