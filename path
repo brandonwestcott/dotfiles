@@ -7,5 +7,8 @@ PATH=$PATH:$HOME/.rvm/bin
 # Add NPM to PATH
 PATH=$PATH:/usr/local/share/npm/bin
 
+# Add NPM loacl package to PATH - only works from top level dir in project
+PATH=$PATH:./node_modules/.bin
+
 # Add user bin PATH ahead of everything
 PATH=/usr/local/bin:$PATH
