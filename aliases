@@ -12,6 +12,12 @@ alias gtrack='git update-index --no-assume-unchanged'
 alias glistnotrack='git ls-files -v | grep "^h"'
 function gblame() { git blame $@ | sort -b -k 3}
 
+#shortcuts
+alias r='bundle exec rspec spec'
+alias c='bundle exec cucumber features'
+alias rspec='bundle exec rspec'
+alias cucumber='bundle exec cucumber'
+
 #directory shortcuts
 alias .wk='cd ~/working/'
 alias .dot='cd ~/.dotfiles/'
