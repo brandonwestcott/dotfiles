@@ -23,7 +23,7 @@ syntax on
 " Highlight current line
 set cursorline
 " Show “invisible” characters
-set listchars=tab:▸\ ,trail:·,eol:¬
+set listchars=tab:·\ ,trail:▸,eol:¬
 set list
 " Always show status line
 set laststatus=2
@@ -54,6 +54,10 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set smarttab
+
+" Indentation by filetype
+autocmd Filetype php setlocal ts=2 sw=2 noexpandtab autoindent
+
 " Indent lines with ctrl+[ and ctrl+]
 nmap <c-o> >>
 nmap <c-i> <<
