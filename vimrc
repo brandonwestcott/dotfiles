@@ -23,7 +23,7 @@ syntax on
 " Highlight current line
 set cursorline
 " Show “invisible” characters
-set listchars=tab:·\ ,trail:▸,eol:¬
+set listchars=tab:--,trail:·,eol:¬
 set list
 " Always show status line
 set laststatus=2
@@ -54,9 +54,14 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set smarttab
+" Guess idention settings by buffer
+autocmd BufReadPost * :DetectIndent
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 2
 
 " Indentation by filetype
-autocmd Filetype php setlocal ts=2 sw=2 noexpandtab autoindent
+autocmd Filetype php,coffee setlocal ts=2 sw=2 noexpandtab autoindent
+autocmd Filetype php setlocal nolist
 
 " Indent lines with ctrl+[ and ctrl+]
 nmap <c-o> >>
@@ -77,12 +82,16 @@ let NERDTreeQuitOnOpen=0
 map <C-n> :NERDTreeTabsToggle<CR>
 " Hide second Nerdtree buffer if open
 autocmd VimEnter * if bufname('1') == 'NERD_tree_1' | silent execute "bd 2" | endif
-" Autoshow nerdtree when not committing
-" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif
+" Autohide nerdtree when committing
+autocmd VimEnter * if &filetype !=# 'gitcommit' | silent execute "NERDTreeTabsToggle" | endif
+" Move cursor to active window
+autocmd VimEnter * wincmd l
+autocmd VimEnter * execute "echo bufname('%')"
+autocmd VimEnter * if bufname('%') == '' | wincmd h | endif
 " config options
 let g:nerdtree_tabs_autoclose=0
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:nerdtree_tabs_open_on_gui_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Buffer File List
 map <c-b> :CtrlPBuffer<CR>
