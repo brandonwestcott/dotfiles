@@ -10,7 +10,13 @@ alias gpr='git pull --rebase'
 alias gnotrack='git update-index --assume-unchanged'
 alias gtrack='git update-index --no-assume-unchanged'
 alias glistnotrack='git ls-files -v | grep "^h"'
+alias gcm='git commit -m'
 function gblame() { git blame $@ | sort -b -k 3}
+
+# docker aliases
+alias doc='docker'
+alias dc='docker-compose'
+alias dcrspec='dc run web bundle exec rspec'
 
 #shortcuts
 alias r='bundle exec rspec spec'
