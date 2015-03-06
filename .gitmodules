@@ -25,3 +25,6 @@
 [submodule "vim/bundle/detectindent"]
 	path = vim/bundle/detectindent
 	url = git@github.com:ciaranm/detectindent.git
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
