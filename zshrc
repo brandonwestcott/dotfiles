@@ -65,3 +65,7 @@ zle -N _history-incremental-preserving-pattern-search-backward
 bindkey "^R" _history-incremental-preserving-pattern-search-backward
 bindkey -M isearch "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
+
+if hash aws_zsh_completer.sh 2>/dev/null; then
+  source "$(which aws_zsh_completer.sh)"
+fi
