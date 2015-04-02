@@ -35,6 +35,8 @@ set noerrorbells
 set scrolloff=3
 " Mouse scrolling
 set mouse=a
+" Line barriers
+set colorcolumn=120
 
 " Better search options
 set ignorecase
