@@ -1,0 +1,185 @@
+# Ask for the administrator password upfront
+sudo -v
+
+# # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# MOUSE & KEYBOARD
+# Disable natural scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# Trackpad two finger doulbe tap
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool true
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Set a shorter Delay until key repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
+# Set a faster keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+# Enable full keyboard in modals
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+
+# FINDER
+# show extensions on files
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+# show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# disable menu bar transperancy
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+# show batter percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+# Disable "Are you sure you want to open this application?"
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+# Show drives on desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# Secure trash empty by default
+defaults write com.apple.finder EmptyTrashSecurely -bool true
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# show listview as default
+defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv"
+# Show absolute path in finder's title bar
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+# Avoiding creating stupid .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# Enable snap-to-grid for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy none" ~/Library/Preferences/com.apple.finder.plist
+# Set grid spacing for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 62" ~/Library/Preferences/com.apple.finder.plist
+# Set the size of icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+
+# Unhide the ~/Library folder
+chflags nohidden ~/Library
+
+# DOCK
+# Set the icon size of Dock items to 27 pixels
+defaults write com.apple.dock tilesize -int 27
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# HOTCORNERS
+# Possible values:
+# #  0: no-op
+# #  2: Mission Control
+# #  3: Show application windows
+# #  4: Desktop
+# #  5: Start screen saver
+# #  6: Disable screen saver
+# #  7: Dashboard
+# # 10: Put display to sleep
+# # 11: Launchpad
+# # 12: Notification Center
+# Top Left to Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 2
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top Right to Mission Control
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom Left to Desktop
+defaults write com.apple.dock wvous-bl-corner -int 4
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Bottom Right to Desktop
+defaults write com.apple.dock wvous-br-corner -int 4
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+# TERMINAL
+# Enabling UTF-8 ONLY in Terminal.app and setting the Pro theme by default
+defaults write com.apple.Terminal StringEncodings -array 4
+defaults write com.apple.Terminal ShellExitAction 2
+defaults write com.apple.Terminal FontAntialias 1
+defaults write com.apple.Terminal Shell "/bin/zsh"
+defaults write com.apple.Terminal "Default Window Settings" "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" "Pro"
+
+# SAFARI
+# Disabling Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Removing useless icons from Safari’s bookmarks bar
+defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+# Enabling the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+# Adding a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+
+
+# OTHER
+# Speed up wake from sleep to 4 hours from an hour
+# http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
+sudo pmset -a standbydelay 14400
+
+# Enable Assistive Devices 
+sudo touch /private/var/db/.AccessibilityAPIEnabled
+
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Display ASCII control characters using caret notation in standard text views
+# # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
+defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Disable autocorrect
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Increasing the window resize speed for Cocoa applications whether you like it or not
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+
+# Chrome
+# Disable the all too sensitive backswipe on trackpads
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+# Disable the all too sensitive backswipe on Magic Mouse
+defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+# osx command line tools
+xcode-select --install
+
+# download homebrew
+if ! hash brew 2>/dev/null; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# install some homebrew packages
+brew install git
+brew install vim
+
+for app in Finder Dock Mail Safari iTunes
+  do
+    killall "$app" > /dev/null 2>&1
+  done
+echo "Please restart for all changes to take effect"

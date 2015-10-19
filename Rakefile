@@ -46,6 +46,6 @@ end
 
 def manifest
   files = Dir['*']
-  files -= %w(Rakefile README.md)
+  files -= %w(Rakefile README.md osx_setup)
   files.sort
 end
