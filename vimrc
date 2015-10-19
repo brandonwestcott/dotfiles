@@ -116,12 +116,5 @@ map <c-h> <c-w>h
 map <S-k> <c-u>
 map <S-j> <c-d>
 
-" Training wheels (disable arrow keys)
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" Specific highlighting
+au BufRead,BufNewFile *.thor set filetype=ruby
