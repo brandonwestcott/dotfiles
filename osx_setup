@@ -21,7 +21,10 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 20
 defaults write NSGlobalDomain KeyRepeat -int 2
 # Enable full keyboard in modals
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
+# global mouse tracking speed (1...5)
+ defaults write NSGlobalDomain com.apple.mouse.scaling -float 2.5
+# global trackpad tracking speed (1...5)
+defaults write NSGlobalDomain com.apple.trackpad.scaling -int 3
 
 # FINDER
 # show extensions on files
@@ -29,7 +32,8 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # show hidden files
 defaults write com.apple.finder AppleShowAllFiles YES
 # show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+#defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # disable menu bar transperancy
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 # show batter percentage
